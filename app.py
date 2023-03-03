@@ -324,9 +324,9 @@ def messages_add():
 @app.route('/messages/<int:message_id>', methods=["GET"])
 def messages_show(message_id):
     """Show a message."""
-
+    user_likes = [msg.id for msg in g.user.likes]
     msg = Message.query.get_or_404(message_id)
-    return render_template('messages/show.html', message=msg)
+    return render_template('messages/show.html', message=msg, likes = user_likes)
 
 
 @app.route('/messages/<int:message_id>/delete', methods=["POST"])

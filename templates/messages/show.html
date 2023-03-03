@@ -32,6 +32,11 @@
               {% endif %}
             </div>
             <p class="single-message">{{ message.text }}</p>
+            {% if message.id in likes %}
+              {% for like in likes %}
+                <p class="text-muted">Likes: {{like}}</p>
+              {% endfor%}
+            {% endif %}
             <span class="text-muted">{{ message.timestamp.strftime('%d %B %Y') }}</span>
           </div>
         </li>
